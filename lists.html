@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultimate Advanced To-Do List</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docx/8.1.0/docx.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.snow.css">
+<style>
+
+</style>
+</head>
+<body class="theme-light flex flex-col items-center p-4">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🔥 Ultimate To-Do List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+/* ===========================
+   Variables
+=========================== */
+:root {
+  --accent: #6d28d9;
+  --accent-gradient: linear-gradient(45deg, #6d28d9, #4f46e5, #22d3ee);
+  --bg-light: #f9fafb;
+  --scroll-thumb: #6d28d9;
+  --scroll-track: #e5e7eb;
+  --radius: 0.75rem;
+  --speed: 0.4s;
+}
+
+/* ===========================
+   Parallax Background
+=========================== */
+body {
+  background: linear-gradient(to bottom, #f9fafb, #e0e7ff);
+  perspective: 1px;
+  transform-style: preserve-3d;
+}
+
+.parallax {
+  background: url('https://picsum.photos/1600/900?blur=2') center/cover no-repeat;
+  position: relative;
+  height: 400px;
+  transform: translateZ(-1px) scale(2);
+  z-index: -1;
+  filter: brightness(0.7);
+}
+
+/* ===========================
+   Custom Scrollbar
+=========================== */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+  border-radius: var(--radius);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-gradient);
+  border-radius: var(--radius);
+  border: 2px solid var(--scroll-track);
+}
+
+
+/* ===========================
+   Checkbox (custom style)
+=========================== */
+input[type="checkbox"] {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--accent);
+  cursor:pointer;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  cursor: pointer;
+  transition: all var(--speed) ease;
+  position: relative;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 15%, 80% 0, 43% 62%);
+  background: var(--accent);
+  transform: scale(0);
+  transition: transform var(--speed) ease;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+input[type="checkbox"]:hover {
+  box-shadow: 0 0 10px var(--accent);
+  transform: scale(1.1);
+}
+
+/* ===========================
+   Animated Gradient Borders
+=========================== */
+.gradient-border {
+  position: relative;
+  padding: 1rem;
+  border-radius: var(--radius);
+  background: var(--bg-light);
+  z-index: 1;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 3px;
+  background: conic-gradient(
+    from 180deg,
+    #6d28d9,
+    #4f46e5,
+    #22d3ee,
+    #16a34a,
+    #eab308,
+    #ef4444,
+    #6d28d9
+  );
+  background-size: 200% 200%;
+  animation: spinBorder 6s linear infinite;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  z-index: -1;
+}
+
+@keyframes spinBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* ===========================
+   Responsive Layout (grid+flex)
+=========================== */
+.complex-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+@media (max-width: 1024px) {
+  .complex-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .complex-layout {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+  </style>
+</head>
+<body class="theme-light flex flex-col items-center p-4">
+
+  <!-- Main Container -->
+  <main class="max-w-4xl w-full bg-white p-6 shadow-xl rounded-lg">
+
+    <!-- App Header -->
+    <header class="mb-6">
+      <h1 class="text-3xl font-bold">🔥 Ultimate To-Do List</h1>
+    </header>
+
+    <!-- Filters Section -->
+    <section aria-labelledby="filters-title" class="mb-4">
+      <h2 id="filters-title" class="sr-only">Task Filters</h2>
+      <form class="flex gap-2 flex-wrap" role="search">
+        <input id="searchBox" type="text" placeholder="Search tasks..." class="flex-1 border p-2 rounded" aria-label="Search tasks">
+        <select id="filterPriority" class="border p-2 rounded" aria-label="Filter by priority">
+          <option value="">All Priorities</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+        <select id="filterCategory" class="border p-2 rounded" aria-label="Filter by category">
+          <option value="">All Categories</option>
+        </select>
+        <select id="filterCompleted" class="border p-2 rounded" aria-label="Filter by status">
+          <option value="">All Status</option>
+          <option value="completed">Completed</option>
+          <option value="pending">Pending</option>
+        </select>
+      </form>
+    </section>
+
+    <!-- Editor Section -->
+    <section aria-labelledby="editor-title" class="mb-4">
+      <h2 id="editor-title" class="sr-only">Task Editor</h2>
+      <div id="editor"></div>
+    </section>
+
+    <!-- Task Inputs -->
+    <section aria-labelledby="task-inputs" class="mb-4">
+      <h2 id="task-inputs" class="sr-only">New Task Inputs</h2>
+      <div class="flex gap-2 mb-2 flex-wrap">
+        <input id="priority" type="text" placeholder="Priority: low/medium/high" class="border p-2 rounded">
+        <input id="category" type="text" placeholder="Category" class="border p-2 rounded">
+        <input id="tags" type="text" placeholder="Tags comma separated" class="border p-2 rounded">
+        <input id="deadline" type="datetime-local" class="border p-2 rounded">
+      </div>
+      <label for="recurring" class="font-semibold block">Recurring Tasks:</label>
+      <select id="recurring" class="border p-2 rounded">
+        <option value="">No Recurring</option>
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+        <option value="monthly">Monthly</option>
+      </select>
+    </section>
+
+    <!-- Actions -->
+    <nav aria-label="Task actions" class="flex gap-2 flex-wrap mb-6">
+      <button id="addTask" class="px-4 py-2 bg-blue-500 text-white rounded w-full md:w-auto">
+        <i class="fas fa-plus"></i> Add Task
+      </button>
+      <button id="clearAll" class="px-4 py-2 bg-red-500 text-white rounded">Clear All</button>
+      <button id="exportWord" class="px-4 py-2 bg-gray-700 text-white rounded">Export Word</button>
+      <button id="exportJSON" class="px-4 py-2 bg-green-700 text-white rounded">Export JSON</button>
+      <input type="file" id="importJSON" class="hidden" aria-hidden="true">
+      <button onclick="document.getElementById('importJSON').click()" class="px-4 py-2 bg-purple-600 text-white rounded">Import JSON</button>
+    </nav>
+
+    <!-- File Attachments -->
+    <aside aria-labelledby="attachments" class="mb-6">
+      <h2 id="attachments" class="font-semibold mb-2">Attach File:</h2>
+      <input type="file" id="fileInput" multiple class="hidden">
+      <button id="fileButton" 
+              class="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+              onclick="document.getElementById('fileInput').click()">
+        <i class="fas fa-paperclip"></i> Choose File
+      </button>
+      <div id="filePreview" class="mt-2 p-2 border rounded bg-gray-50"></div>
+    </aside>
+
+    <!-- Progress -->
+    <section aria-labelledby="progress" class="mb-6">
+      <h2 id="progress" class="font-semibold mb-2">Progress</h2>
+      <p id="progressText" class="mb-2 font-semibold">Progress: 0%</p>
+      <div class="w-full bg-gray-300 rounded-full h-3">
+        <div id="progressBar" class="h-3 bg-green-500 rounded-full" style="width:0%"></div>
+      </div>
+    </section>
+
+    <!-- Task List -->
+    <section aria-labelledby="task-list">
+      <h2 id="task-list" class="sr-only">Task List</h2>
+      <ul id="taskList" class="task-list space-y-2 mt-4"></ul>
+    </section>
+
+    <!-- Theme Selector -->
+    <footer class="mt-6">
+      <label for="themeSelector">Theme:</label>
+      <select id="themeSelector" class="border p-2 w-full">
+        <option value="theme-light">Light</option>
+        <option value="theme-dark">Dark</option>
+        <option value="theme-blue">Blue</option>
+      </select>
+    </footer>
+  </main>
+<script>
+class ToDoApp {
+  constructor() {
+    // Ensure tasks is always an array
+    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+    this.tasks = Array.isArray(storedTasks) ? storedTasks : [];
+    this.theme = localStorage.getItem("theme") || "theme-light";
+    this.quill = null;
+
+    this.init();
+  }
+
+  init() {
+    this.initQuill();
+    this.initSortable();
+    this.initListeners();
+    this.applyTheme();
+    this.loadTasks();
+    this.populateCategories();
+    this.setupDeadlineReminder();
+    this.initFileProcessing();
+
+  }
+
+  initQuill() {
+    this.quill = new Quill("#editor", {
+      theme: "snow",
+      modules: { toolbar: [["bold","italic"],["link"],["list","bullet"],["clean"]] }
+    });
+  }
+
+  initSortable() {
+    new Sortable(document.getElementById("taskList"), {
+      animation: 150,
+      onEnd: () => this.saveTasks()
+    });
+  }
+
+  initListeners() {
+    document.getElementById("addTask").addEventListener("click", () => this.addTask());
+    document.getElementById("themeSelector").addEventListener("change", e => this.changeTheme(e.target.value));
+    document.getElementById("clearAll").addEventListener("click", () => this.clearAll());
+    document.getElementById("exportWord").addEventListener("click", () => this.exportWord());
+    document.getElementById("exportJSON").addEventListener("click", () => this.exportJSON());
+    document.getElementById("importJSON").addEventListener("change", e => this.importJSON(e));
+    document.getElementById("searchBox").addEventListener("input", () => this.loadTasks());
+    document.getElementById("filterPriority").addEventListener("change", () => this.loadTasks());
+    document.getElementById("filterCategory").addEventListener("change", () => this.loadTasks());
+    document.getElementById("filterCompleted").addEventListener("change", () => this.loadTasks());
+  }
+
+  populateCategories() {
+    const catSet = new Set(this.tasks.map(t => t.category));
+    const filterCat = document.getElementById("filterCategory");
+    filterCat.innerHTML = '<option value="">All Categories</option>';
+    catSet.forEach(c => {
+      const option = document.createElement("option");
+      option.value = c;
+      option.textContent = c;
+      filterCat.appendChild(option);
+    });
+  }
+
+  setupDeadlineReminder() {
+    setInterval(() => {
+      const now = new Date();
+      this.tasks.forEach(t => {
+        if (!t.completed && t.deadline && new Date(t.deadline) - now <= 600000 && !t.notified) {
+          Swal.fire("⏰ Reminder", `Task "${t.content.replace(/<[^>]*>/g,"")}" is due soon!`, "info");
+          t.notified = true;
+          this.saveTasks();
+        }
+      });
+    }, 60000);
+  }
+
+  addTask() {
+    const rawContent = this.quill.getText().trim();
+    const content = this.quill.root.innerHTML.trim(); // keep HTML for rendering
+    const priority = document.getElementById("priority").value || "low";
+    const category = document.getElementById("category").value || "Other";
+    const tags = document.getElementById("tags").value.split(",").map(t => t.trim()).filter(Boolean);
+    const deadline = document.getElementById("deadline").value;
+    const recurring = document.getElementById("recurring").value;
+
+    if (!rawContent || !deadline) {
+      Swal.fire("Error", "Please fill content and deadline!", "error");
+      return;
+    }
+
+    // Ensure tasks is still an array before pushing
+    if (!Array.isArray(this.tasks)) this.tasks = [];
+
+    this.tasks.push({
+      id: Date.now(),
+      content,
+      priority,
+      category,
+      tags,
+      deadline,
+      recurring,
+      completed: false,
+      subtasks: [],
+      history: [],
+      notified: false
+    });
+
+    this.saveTasks();
+    this.clearForm();
+    this.populateCategories();
+  }
+
+  clearForm() {
+    this.quill.root.innerHTML = "";
+    document.getElementById("priority").value = "low";
+    document.getElementById("category").value = "";
+    document.getElementById("tags").value = "";
+    document.getElementById("deadline").value = "";
+    document.getElementById("recurring").value = "";
+  }
+
+  saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(this.tasks));
+    this.loadTasks();
+  }
+
+  loadTasks() {
+    const search = document.getElementById("searchBox").value.toLowerCase();
+    const filterPriority = document.getElementById("filterPriority").value;
+    const filterCategory = document.getElementById("filterCategory").value;
+    const filterCompleted = document.getElementById("filterCompleted").value;
+
+    const list = document.getElementById("taskList");
+    list.innerHTML = "";
+
+    const filteredTasks = this.tasks.filter(task => 
+      (!search || task.content.toLowerCase().includes(search)) &&
+      (!filterPriority || task.priority === filterPriority) &&
+      (!filterCategory || task.category === filterCategory) &&
+      (!filterCompleted || (filterCompleted === "completed" ? task.completed : !task.completed))
+    );
+
+    filteredTasks.forEach((task, index) => {
+      const li = document.createElement("li");
+      li.className = "task-item border p-3 rounded flex justify-between items-start flex-col md:flex-row bg-gray-50";
+      
+      const tagsHTML = task.tags.map(tag => `<span class="tag ${tag==="urgent"?"tag-red":tag==="work"?"tag-orange":"tag-green"}">${tag}</span>`).join(" ");
+
+      li.innerHTML = `
+      
+<li class="task-item border p-4 rounded-lg flex flex-col md:flex-row md:items-center justify-between bg-gray-50 shadow hover:shadow-lg transition transform hover:scale-105">
+  <!-- Task Main Info -->
+  <div class="flex flex-col md:flex-row md:items-center gap-3 w-full">
+    <!-- Task Number -->
+    <span class="text-gray-400 font-semibold w-6 text-center">${index + 1}</span>
+
+    <!-- Checkbox -->
+    <input type="checkbox" ${task.completed ? "checked" : ""} class="mr-2 w-5 h-5 task-checkbox accent-green-500">
+
+    <!-- Task Content & Details -->
+    <div class="flex flex-col md:flex-row md:items-center gap-3 flex-1">
+      <span class="${task.completed ? 'completed text-gray-400 line-through' : 'text-gray-800 font-medium'}">${task.content}</span>
+      <span class="${this.getPriorityClass(task.priority)} px-2 py-1 rounded-full text-white text-xs uppercase">${task.priority}</span>
+      <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">${task.category}</span>
+      <span class="text-gray-500 text-sm">⏰ ${new Date(task.deadline).toLocaleString()}</span>
+      <div class="flex flex-wrap gap-1">
+        ${tagsHTML} <!-- tags styled individually as before -->
+      </div>
+
+      <!-- Render Files if available -->
+      <div class="flex flex-wrap gap-2 mt-2">
+        ${task.files && task.files.length
+          ? task.files.map(file => {
+              const type = file.type || '';
+              if (type.startsWith("image/")) {
+                return `<img src="${file.url}" class="max-w-xs h-auto rounded border">`;
+              } else if (type.startsWith("video/")) {
+                return `<video src="${file.url}" controls class="max-w-xs rounded border"></video>`;
+              } else if (type.startsWith("audio/")) {
+                return `<audio src="${file.url}" controls class="w-full"></audio>`;
+              } else if (type === "application/pdf") {
+                return `<iframe src="${file.url}" class="w-full h-40 border rounded"></iframe>`;
+              } else {
+                return `<p class="text-sm text-gray-500 border p-1 rounded">${file.name}</p>`;
+              }
+            }).join('')
+          : ''
+        }
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="flex gap-2 mt-2 md:mt-0">
+    <button class="edit-btn bg-blue-200 hover:bg-blue-400 text-blue-800 p-2 rounded shadow">
+      <i class="fas fa-edit"></i>
+    </button>
+    <button class="delete-btn bg-red-200 hover:bg-red-400 text-red-800 p-2 rounded shadow">
+      <i class="fas fa-trash"></i>
+    </button>
+    <button class="clone-btn bg-green-200 hover:bg-green-400 text-green-800 p-2 rounded shadow">
+      <i class="fas fa-clone"></i>
+    </button>
+  </div>
+</li>
+ 
+
+      `;
+
+      list.appendChild(li);
+
+      li.querySelector(".task-checkbox").addEventListener("change", () => this.toggleComplete(task.id));
+      li.querySelector(".edit-btn").addEventListener("click", () => this.editTask(task.id));
+      li.querySelector(".delete-btn").addEventListener("click", () => this.deleteTask(task.id));
+      li.querySelector(".clone-btn").addEventListener("click", () => this.cloneTask(task.id));
+    });
+
+    this.updateProgress();
+  }
+
+  updateProgress() {
+    const completedCount = this.tasks.filter(t => t.completed).length;
+    const totalCount = this.tasks.length;
+    const percent = totalCount ? Math.round((completedCount / totalCount) * 100) : 0;
+    document.getElementById("progressText").textContent = `Progress: ${percent}%`;
+    document.getElementById("progressBar").style.width = percent + "%";
+  }
+
+  toggleComplete(id) {
+    const task = this.tasks.find(t => t.id === id);
+    if (task) task.completed = !task.completed;
+    this.saveTasks();
+  }
+
+  editTask(id) {
+  const task = this.tasks.find(t => t.id === id);
+  if (!task) return;
+
+  // Build HTML content for SweetAlert
+  const html = `
+    <input id="swalContent" class="swal2-input" placeholder="Content" value="${task.content.replace(/<[^>]*>/g,"")}">
+    <select id="swalPriority" class="swal2-select">
+      <option value="low" ${task.priority==="low"?"selected":""}>Low</option>
+      <option value="medium" ${task.priority==="medium"?"selected":""}>Medium</option>
+      <option value="high" ${task.priority==="high"?"selected":""}>High</option>
+    </select>
+    <input id="swalCategory" class="swal2-input" placeholder="Category" value="${task.category}">
+    <input id="swalTags" class="swal2-input" placeholder="Tags comma separated" value="${task.tags.join(", ")}">
+    <input id="swalDeadline" type="datetime-local" class="swal2-input" value="${task.deadline}">
+    <select id="swalRecurring" class="swal2-select">
+      <option value="" ${task.recurring===""?"selected":""}>No Recurring</option>
+      <option value="daily" ${task.recurring==="daily"?"selected":""}>Daily</option>
+      <option value="weekly" ${task.recurring==="weekly"?"selected":""}>Weekly</option>
+      <option value="monthly" ${task.recurring==="monthly"?"selected":""}>Monthly</option>
+    </select>
+  `;
+
+  Swal.fire({
+    title: "Edit Task",
+    html: html,
+    showCancelButton: true,
+    focusConfirm: false,
+    preConfirm: () => {
+      return {
+        content: document.getElementById("swalContent").value.trim(),
+        priority: document.getElementById("swalPriority").value,
+        category: document.getElementById("swalCategory").value.trim() || "Other",
+        tags: document.getElementById("swalTags").value.split(",").map(t => t.trim()).filter(Boolean),
+        deadline: document.getElementById("swalDeadline").value,
+        recurring: document.getElementById("swalRecurring").value
+      };
+    }
+  }).then(res => {
+    if (res.isConfirmed) {
+      const newData = res.value;
+
+      // Save history for all fields
+      task.history.push({
+        old: { content: task.content, priority: task.priority, category: task.category, tags: [...task.tags], deadline: task.deadline, recurring: task.recurring },
+        new: { ...newData },
+        date: new Date()
+      });
+
+      // Apply changes
+      task.content = newData.content;
+      task.priority = newData.priority;
+      task.category = newData.category;
+      task.tags = newData.tags;
+      task.deadline = newData.deadline;
+      task.recurring = newData.recurring;
+
+      this.saveTasks();
+    }
+  });
+}
+initFileProcessing() {
+  const fileInput = document.getElementById("fileInput");
+  const previewContainer = document.getElementById("filePreview");
+
+  // Helper to render file previews
+  const renderFile = (file) => {
+    const fileType = file.type;
+    let element;
+
+    switch (true) {
+      case fileType.startsWith("image/"):
+        element = document.createElement("img");
+        element.src = URL.createObjectURL(file);
+        element.className = "max-w-full h-auto rounded mb-2";
+        break;
+
+      case fileType.startsWith("video/"):
+        element = document.createElement("video");
+        element.src = URL.createObjectURL(file);
+        element.controls = true;
+        element.className = "max-w-full rounded mb-2";
+        break;
+
+      case fileType.startsWith("audio/"):
+        element = document.createElement("audio");
+        element.src = URL.createObjectURL(file);
+        element.controls = true;
+        element.className = "mb-2";
+        break;
+
+      case fileType === "application/json" || file.name.endsWith(".json"):
+        const readerJSON = new FileReader();
+        readerJSON.onload = () => {
+          const pre = document.createElement("pre");
+          pre.textContent = readerJSON.result;
+          pre.className = "overflow-x-auto text-sm mb-2";
+          previewContainer.appendChild(pre);
+        };
+        readerJSON.readAsText(file);
+        return; // exit early because async
+       
+      case fileType === "text/plain":
+        const readerText = new FileReader();
+        readerText.onload = () => {
+          const pre = document.createElement("pre");
+          pre.textContent = readerText.result;
+          pre.className = "overflow-x-auto text-sm mb-2";
+          previewContainer.appendChild(pre);
+        };
+        readerText.readAsText(file);
+        return; // exit early because async
+
+      case fileType === "application/pdf":
+        element = document.createElement("iframe");
+        element.src = URL.createObjectURL(file);
+        element.className = "w-full h-64 mb-2";
+        break;
+
+      case fileType.includes("word") || file.name.endsWith(".docx"):
+        element = document.createElement("p");
+        element.textContent = `DOCX file selected: ${file.name} (cannot preview contents in browser)`;
+        break;
+
+      default:
+        element = document.createElement("p");
+        element.textContent = `Cannot preview this file type: ${file.name}`;
+        break;
+    }
+
+    if (element) previewContainer.appendChild(element);
+  };
+
+  // Handle standard file input
+  fileInput.addEventListener("change", (e) => {
+    const files = Array.from(e.target.files);
+    if (!files.length) return;
+    previewContainer.innerHTML = ""; // clear previous previews
+    files.forEach(renderFile);
+  });
+
+  // Drag & Drop support
+  const dropArea = previewContainer.parentElement; // or any container
+  dropArea.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropArea.classList.add("drag-over");
+  });
+
+  dropArea.addEventListener("dragleave", () => {
+    dropArea.classList.remove("drag-over");
+  });
+
+  dropArea.addEventListener("drop", (e) => {
+    e.preventDefault();
+    dropArea.classList.remove("drag-over");
+    const files = Array.from(e.dataTransfer.files);
+    if (!files.length) return;
+    previewContainer.innerHTML = "";
+    files.forEach(renderFile);
+  });
+}
+
+  deleteTask(id) {
+  const task = this.tasks.find(t => t.id === id);
+  if (!task) return;
+
+  Swal.fire({
+    title: 'Are you sure?',
+    text: `Do you want to delete the task: "${task.content.replace(/<[^>]*>/g,'')}"?`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'Cancel'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.tasks = this.tasks.filter(t => t.id !== id);
+      this.saveTasks();
+      Swal.fire({
+        title: 'Deleted!',
+        text: 'Task has been deleted successfully.',
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false
+      });
+    }
+  });
+}
+
+cloneTask(id) {
+  const task = this.tasks.find(t => t.id === id);
+  if (!task) return;
+
+  const clone = JSON.parse(JSON.stringify(task));
+  clone.id = Date.now();
+  this.tasks.push(clone);
+  this.saveTasks();
+
+  Swal.fire({
+    title: 'Cloned!',
+    text: `Task "${task.content.replace(/<[^>]*>/g,'')}" has been cloned successfully.`,
+    icon: 'success',
+    timer: 1500,
+    showConfirmButton: false
+  });
+}
+
+
+  clearAll() {
+    Swal.fire({
+      title: "Delete All Tasks?",
+      showCancelButton: true
+    }).then(res => {
+      if (res.isConfirmed) {
+        this.tasks = [];
+        this.saveTasks();
+      }
+    });
+  }
+
+  getPriorityClass(priority) {
+    if (priority === "high") return "priority-high";
+    if (priority === "medium") return "priority-medium";
+    return "priority-low";
+  }
+
+  changeTheme(theme) {
+    document.body.classList.remove(this.theme);
+    this.theme = theme;
+    document.body.classList.add(this.theme);
+    localStorage.setItem("theme", this.theme);
+  }
+
+  applyTheme() {
+    document.body.classList.add(this.theme);
+    document.getElementById("themeSelector").value = this.theme;
+  }
+
+  exportWord() {
+    const doc = new docx.Document();
+    this.tasks.forEach(task => {
+      doc.addSection({
+        children: [new docx.Paragraph(`${task.content} (${task.priority}, ${task.deadline})`)]
+      });
+    });
+    docx.Packer.toBlob(doc).then(blob => {
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "tasks.docx";
+      a.click();
+    });
+  }
+
+  exportJSON() {
+    const data = JSON.stringify(this.tasks, null, 2);
+    const blob = new Blob([data], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "tasks.json";
+    a.click();
+  }
+
+
+
+const app = new ToDoApp();
+
+</script>
+</body>
+</html>
