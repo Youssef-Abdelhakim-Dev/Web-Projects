@@ -12,7 +12,7 @@
 ---
 
 ## 🌐 Live Demo  
-**[View Live Demo].https://github.com/user-attachments/assets/7c046f8f-6cae-487f-8591-c70b06c237e8**
+**[View Live Demo].(https://github.com/user-attachments/assets/7c046f8f-6cae-487f-8591-c70b06c237e8)**
 ---
 
 
