@@ -1,151 +1,158 @@
+# ⏰ Digital Clock Application  
+> A modern **digital clock app** built with the **HTML Canvas API** and **JavaScript**, featuring real-time rendering, smooth animations, and a fully responsive design.
 
-# ⏰ Digital Clock Application
-
-A modern **digital clock app** built with the **HTML Canvas API** and **JavaScript** to render smooth, dynamic graphics and real-time animations. Designed with a responsive UI that adapts across devices, ensuring both precision and performance.
-
----
-## Live demo
-
-
-
-https://github.com/user-attachments/assets/764d38b3-698e-4dc5-b337-10753aeb67fb
-
-
-## 🚀 Features
-
-- 🕒 **Real-Time Clock Rendering**  
-  - Dynamic clock hands rendered on the HTML Canvas  
-  - Accurate synchronization with system time  
-
-- 🎨 **Canvas Animations**  
-  - Smooth and visually appealing graphics  
-  - Optimized rendering for high performance  
-
-- 📱 **Responsive UI**  
-  - Adapts to various screen sizes and devices  
-  - Clean, minimal design  
-
-- ⚡ **Performance Optimizations**  
-  - Efficient rendering techniques  
-  - Lightweight and fast for seamless experience  
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Canvas](https://img.shields.io/badge/Canvas_API-FF6F00?style=for-the-badge&logo=canvas&logoColor=white)
+![Responsive](https://img.shields.io/badge/Responsive_Design-00BFA5?style=for-the-badge)
+![Performance](https://img.shields.io/badge/Optimized-Fast-brightgreen?style=for-the-badge)
 
 ---
 
-## 🛠️ Tech Stack
-
-- **Frontend:** HTML5, CSS3, JavaScript (ES6+)  
-- **Graphics & Animations:** HTML Canvas API  
-
----
-# 🎯 Interactive Number Guessing Game
-
-An engaging **number guessing game** with multiple difficulty levels and real-time feedback.  
-Built with **JavaScript, HTML5, and CSS3**, this project combines a robust game engine with immersive UI elements, ensuring a fun and seamless experience across devices.  
-
----
-## Live demo
-
-
-
-https://github.com/user-attachments/assets/23fa09e6-7758-49bd-b8ad-09ff6f2a72da
-
-
-## 🚀 Features
-
-- 🔢 **Random Number Generation**  
-  - Unique number generated for each session  
-  - Difficulty levels adjust the number range  
-
-- 🎮 **Core Game Loop**  
-  - Structured attempt system (up to 7 guesses)  
-  - Intelligent feedback: *"Too high"* or *"Too low"*  
-
-- 🌈 **User Experience Enhancements**  
-  - Color-coded UI feedback for guesses  
-  - Smooth animations and immersive sound effects  
-
-- ⚡ **Optimized Game Logic**  
-  - Efficient state management  
-  - Responsive design for all devices  
+## 🌐 Live Demo  
+🎮 **[View Live Demo](https://github.com/user-attachments/assets/764d38b3-698e-4dc5-b337-10753aeb67fb)**  
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Features  
 
-- **Frontend:** HTML5, CSS3, JavaScript (ES6+)  
-- **UI Enhancements:** CSS Animations, Audio API  
-
----
-
- # ⌨️ Advanced Typing Speed Test
-
-A modern **Typing Speed Test application** built with **HTML5, CSS3, and JavaScript**.  
-This project uses the **Canvas API** for dynamic UI rendering, real-time performance tracking, and a **leaderboard system** stored in `localStorage`.  
-It challenges users with random typing passages, calculating **WPM**, **accuracy**, and **mistakes** — all within a timed session.
-
----
-## Live demo
-
-
-https://github.com/user-attachments/assets/5ed3dc40-955e-46cb-af0e-be1865d2a0fa
-
-
-## 🚀 Features
-
-- ⏱ **Countdown Timer** – 60-second typing challenge  
-- 📝 **Random Text Generator** – passages chosen dynamically  
-- ⚡ **Real-Time Stats**  
-  - Words Per Minute (WPM)  
-  - Accuracy percentage  
-  - Mistake count  
-- 🏆 **Leaderboard System** – Top 5 scores saved in localStorage  
-- 🎨 **Modern Responsive UI** – clean design with intuitive layout  
-- 🔄 **Start & Reset Controls** – full game loop implementation  
+- 🕒 **Real-Time Clock Rendering** – dynamically updates using the system clock  
+- 🎨 **Canvas Animations** – smooth, visually appealing graphics  
+- 📱 **Responsive Design** – adjusts beautifully across all screen sizes  
+- ⚡ **Performance Optimization** – efficient rendering and lightweight architecture  
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack  
 
-- **Frontend:** HTML5, CSS3, JavaScript (ES6+)  
-- **Logic:** DOM Manipulation, Event Listeners, localStorage  
-- **UI:** Responsive CSS, Styled Buttons, Dynamic Leaderboard  
-
----
-# 🔗 Advanced URL Shortener
-
-A modern **URL Shortener application** built with **HTML5, Tailwind CSS, and JavaScript (ES6+)**.  
-This app allows users to shorten long URLs, generate **custom aliases**, copy links to the clipboard, and even create **QR codes** for easy sharing.  
-It includes a **dark mode toggle**, **link history management**, and a clean responsive design powered by TailwindCSS.  
-
----
-## Live demo
-
-
-
-https://github.com/user-attachments/assets/54274946-2ab2-40de-b636-95a7fc97f2c7
-
-
-## ✨ Features
-
-- 🔗 **Shorten URLs** with random codes or custom aliases  
-- 📋 **Copy links** to clipboard with one click  
-- 📱 **Generate QR codes** for shortened links  
-- 🗑️ **Delete links** from history instantly  
-- 🔍 **Search & filter saved links**  
-- 🌓 **Dark Mode toggle** (saved in localStorage)  
-- 📜 **Link history persistence**  
-- 🎨 **Modern UI** with Tailwind CSS and Lucide icons  
+| Technology | Purpose |
+|:--|:--|
+| **HTML5 / CSS3** | Structure and visual styling |
+| **JavaScript (ES6+)** | Clock logic and dynamic updates |
+| **Canvas API** | Rendering smooth animations |
 
 ---
 
-## 🛠️ Tech Stack
+# 🎯 Interactive Number Guessing Game  
+> A dynamic **number guessing game** featuring difficulty levels, real-time feedback, and smooth animations for a fun interactive experience.
 
-- **Frontend:** HTML5, TailwindCSS, JavaScript (ES6+)  
-- **Icons:** [Lucide Icons](https://lucide.dev/)  
-- **QR Code Generator:** [qrcodejs](https://github.com/davidshimjs/qrcodejs)  
-- **Persistence:** localStorage  
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![GameDev](https://img.shields.io/badge/Game_Engine-Logic-orange?style=for-the-badge)
+![Responsive](https://img.shields.io/badge/Responsive_UI-00BFA5?style=for-the-badge)
+![Performance](https://img.shields.io/badge/Fast_Loading-Optimized-brightgreen?style=for-the-badge)
 
 ---
+
+## 🌐 Live Demo  
+🎮 **[Try the Game](https://github.com/user-attachments/assets/23fa09e6-7758-49bd-b8ad-09ff6f2a72da)**  
+
+---
+
+## 🚀 Features  
+
+- 🔢 **Random Number Generation** – new challenge every session  
+- 🎮 **Core Game Loop** – up to 7 intelligent attempts  
+- 🌈 **Feedback System** – *Too high* / *Too low* with animated feedback  
+- 🎨 **Smooth Animations** – CSS transitions and color-coded responses  
+- ⚡ **Optimized Logic** – lightweight and responsive  
+
+---
+
+## 🛠️ Tech Stack  
+
+| Technology | Purpose |
+|:--|:--|
+| **HTML5 / CSS3** | UI and animations |
+| **JavaScript (ES6+)** | Core game logic |
+| **Audio & Events** | Interactivity and sound effects |
+
+---
+
+# ⌨️ Advanced Typing Speed Test  
+> A powerful **Typing Speed Test** that measures WPM, accuracy, and mistakes — built with **HTML5, CSS3, and JavaScript** using the **Canvas API** for a sleek animated UI.
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Canvas](https://img.shields.io/badge/Canvas_API-FF6F00?style=for-the-badge)
+![localStorage](https://img.shields.io/badge/localStorage-Leaderboard-blueviolet?style=for-the-badge)
+![Responsive](https://img.shields.io/badge/Responsive_UI-00BFA5?style=for-the-badge)
+
+---
+
+## 🌐 Live Demo  
+🧮 **[Play Now](https://github.com/user-attachments/assets/5ed3dc40-955e-46cb-af0e-be1865d2a0fa)**  
+
+---
+
+## 🚀 Features  
+
+- ⏱ **Countdown Timer** – 60-second timed challenge  
+- 📝 **Random Text Generator** – dynamic passages each session  
+- ⚡ **Real-Time Stats** – WPM, accuracy, and mistakes  
+- 🏆 **Leaderboard** – top 5 stored via `localStorage`  
+- 🎨 **Modern Responsive UI** – clean, adaptive interface  
+- 🔄 **Start / Reset Controls** – full game cycle  
+
+---
+
+## 🛠️ Tech Stack  
+
+| Technology | Purpose |
+|:--|:--|
+| **HTML5 / CSS3** | Structure and styling |
+| **JavaScript (ES6+)** | Core logic and data tracking |
+| **Canvas API** | Dynamic rendering |
+| **localStorage** | Save leaderboard scores |
+
+---
+
+# 🔗 Advanced URL Shortener  
+> A sleek **URL Shortener App** with custom aliases, QR code generation, dark mode, and persistent link history — built using **HTML5, Tailwind CSS, and JavaScript (ES6+).**
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![QR_Code](https://img.shields.io/badge/QR_Code-Generator-00BFA5?style=for-the-badge)
+![Dark_Mode](https://img.shields.io/badge/Dark_Mode-Enabled-4B5563?style=for-the-badge)
+![Responsive](https://img.shields.io/badge/Responsive_UI-00C7B7?style=for-the-badge)
+
+---
+
+## 🌐 Live Demo  
+🔗 **[Try it Live](https://github.com/user-attachments/assets/54274946-2ab2-40de-b636-95a7fc97f2c7)**  
+
+---
+
+## ✨ Features  
+
+- 🔗 **Shorten URLs** with random or custom aliases  
+- 📋 **Copy to Clipboard** instantly  
+- 📱 **Generate QR Codes** for each shortened link  
+- 🗑️ **Delete or manage saved links** easily  
+- 🔍 **Search & Filter** saved links  
+- 🌓 **Dark Mode** with persistent settings  
+- 📜 **Link History** stored in `localStorage`  
+- 🎨 **Modern UI** using TailwindCSS & Lucide icons  
+
+---
+
+## 🛠️ Tech Stack  
+
+| Technology | Purpose |
+|:--|:--|
+| **HTML5 / TailwindCSS / JS (ES6+)** | UI and logic |
+| **Lucide Icons** | UI icons |
+| **qrcodejs** | QR code generation |
+| **localStorage** | Persistent link storage |
+
+---
+
+⭐ *If you like these projects, don’t forget to give them a Star on GitHub!*
+
 # 💰 Millionaire Quiz Game 🎯  
 > A fun, fast-paced quiz inspired by *“Who Wants to Be a Millionaire”* — featuring a timer, score system, and lifelines like 50:50 and Phone a Friend! 🧠⚡  
 
