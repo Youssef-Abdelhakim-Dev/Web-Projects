@@ -1,43 +1,15 @@
-# 🎯 Dynamic question Application
 
-A dynamic and interactive question game powered by the **Open Trivia API**, designed to deliver real-time question data with an engaging and smooth user experience.
-
----
-
-## 🚀 Features
-
-- **Real-time Questions**  
-  Fetches and displays **20 unique questions per game** from the [Open Trivia API](https://opentdb.com/).
-
-- **Core Game Loop**  
-  - ⏱️ Countdown timer for each question  
-  - 🏆 Points system with score tracking  
-
-- **Enhanced User Experience**  
-  - 🎉 Animated pop-ups  
-  - 🔊 Sound effects  
-  - 💡 Hint options for tricky questions  
-
-- **Robust Performance**  
-  - Efficient API handling  
-  - Reliable state management system  
-
----
-
-## 🛠️ Tech Stack
-
-- **Frontend:** React (or Vanilla JS if no framework)  
-- **State Management:** Context API / Redux / Custom hooks  
-- **API:** Open Trivia Database API  
-- **Styling:** Tailwind CSS / Styled Components / CSS3  
-- **Extras:** Framer Motion for animations, custom sound effects  
-
----
 # ⏰ Digital Clock Application
 
 A modern **digital clock app** built with the **HTML Canvas API** and **JavaScript** to render smooth, dynamic graphics and real-time animations. Designed with a responsive UI that adapts across devices, ensuring both precision and performance.
 
 ---
+## Live demo
+
+
+
+https://github.com/user-attachments/assets/764d38b3-698e-4dc5-b337-10753aeb67fb
+
 
 ## 🚀 Features
 
@@ -71,6 +43,12 @@ An engaging **number guessing game** with multiple difficulty levels and real-ti
 Built with **JavaScript, HTML5, and CSS3**, this project combines a robust game engine with immersive UI elements, ensuring a fun and seamless experience across devices.  
 
 ---
+## Live demo
+
+
+
+https://github.com/user-attachments/assets/23fa09e6-7758-49bd-b8ad-09ff6f2a72da
+
 
 ## 🚀 Features
 
@@ -106,6 +84,11 @@ This project uses the **Canvas API** for dynamic UI rendering, real-time perform
 It challenges users with random typing passages, calculating **WPM**, **accuracy**, and **mistakes** — all within a timed session.
 
 ---
+## Live demo
+
+
+https://github.com/user-attachments/assets/5ed3dc40-955e-46cb-af0e-be1865d2a0fa
+
 
 ## 🚀 Features
 
@@ -135,6 +118,12 @@ This app allows users to shorten long URLs, generate **custom aliases**, copy li
 It includes a **dark mode toggle**, **link history management**, and a clean responsive design powered by TailwindCSS.  
 
 ---
+## Live demo
+
+
+
+https://github.com/user-attachments/assets/54274946-2ab2-40de-b636-95a7fc97f2c7
+
 
 ## ✨ Features
 
@@ -155,5 +144,47 @@ It includes a **dark mode toggle**, **link history management**, and a clean res
 - **Icons:** [Lucide Icons](https://lucide.dev/)  
 - **QR Code Generator:** [qrcodejs](https://github.com/davidshimjs/qrcodejs)  
 - **Persistence:** localStorage  
+
+---
+# 💰 Millionaire Quiz Game 🎯  
+> A fun, fast-paced quiz inspired by *“Who Wants to Be a Millionaire”* — featuring a timer, score system, and lifelines like 50:50 and Phone a Friend! 🧠⚡  
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![SweetAlert2](https://img.shields.io/badge/SweetAlert2-FF6F61?style=for-the-badge&logo=googlechrome&logoColor=white)
+![Howler.js](https://img.shields.io/badge/Howler.js-00BFA5?style=for-the-badge)
+![Netlify](https://img.shields.io/badge/Deployed%20on-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
+
+---
+
+## 🌐 Live Demo  
+🎮 **[Play the Game Now](https://lnkd.in/gfHTrvCn)**  
+
+
+---
+
+## 🧩 Project Overview  
+
+| Component | Description |
+|:--|:--|
+| 🎨 **HTML & CSS** | Used for the responsive layout and gradient background design. |
+| ⚡ **JavaScript** | Handles game logic — questions, timer, scoring, and lifelines (50:50, phone a friend). |
+| 🎲 **Fetch API** | Fetches random quiz questions from **Trivia API**. |
+| 🟢 **SweetAlert2** | Displays modern popup alerts for correct and incorrect answers. |
+| 🔊 **Howler.js** | Adds dynamic sound effects for each action and answer. |
+
+---
+
+## ✨ Features  
+
+- 🧠 Engaging and interactive gameplay  
+- ⏱️ Countdown timer for each question  
+- 💎 Smart scoring system  
+- 🧩 Lifelines:
+  - 50:50 – removes two incorrect answers  
+  - Phone a Friend – gives a hint to the correct one  
+- 🔊 Fun sound effects  
+- 📱 Fully responsive — playable on all devices  
 
 ---
