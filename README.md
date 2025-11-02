@@ -1,3 +1,70 @@
+# ✅ Ultimate To-Do List Application  
+> A powerful **task management tool** built with **Tailwind CSS** and **JavaScript**, featuring filters, rich-text editing, recurring tasks, file attachments, and progress tracking — all in a responsive, accessible interface.
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Quill.js](https://img.shields.io/badge/Quill.js-Rich_Text_Editor-FF6F00?style=for-the-badge)
+![SortableJS](https://img.shields.io/badge/Sortable.js-Drag_and_Drop-00BFA5?style=for-the-badge)
+![FontAwesome](https://img.shields.io/badge/Font_Awesome-Icons-4B5563?style=for-the-badge)
+![Responsive](https://img.shields.io/badge/Responsive_UI-Optimized-brightgreen?style=for-the-badge)
+
+---
+
+## 🌐 Live Demo  
+**[View Live Demo].https://github.com/user-attachments/assets/7c046f8f-6cae-487f-8591-c70b06c237e8**
+---
+
+
+
+
+
+## 🚀 Features  
+
+- 📝 **Smart Task Management**  
+  - Add, edit, delete, and search tasks dynamically  
+  - Categorize and prioritize tasks (High / Medium / Low)  
+
+- 🔁 **Recurring Tasks**  
+  - Create daily, weekly, or monthly recurring tasks  
+
+- 🎯 **Advanced Filtering System**  
+  - Filter by category, priority, or completion status  
+  - Search instantly using live input  
+
+- 📦 **Import / Export Functionality**  
+  - Export tasks to **Word (.docx)** or **JSON**  
+  - Import existing tasks via JSON upload  
+
+- 📂 **File Attachments**  
+  - Attach and preview multiple files per task  
+
+- 📊 **Progress Tracking**  
+  - Dynamic progress bar and percentage updates in real time  
+
+- 🎨 **Theme Selector**  
+  - Switch between Light, Dark, or Blue themes instantly  
+
+- ✍️ **Rich-Text Editor (Quill.js)**  
+  - Create detailed task descriptions with formatting options  
+
+- 🖱️ **Drag & Drop Sorting**  
+  - Powered by **SortableJS** for reordering tasks  
+
+---
+
+## 🛠️ Tech Stack  
+
+| Technology | Purpose |
+|:--|:--|
+| **HTML5** | Structure and accessibility |
+| **TailwindCSS** | Utility-first styling and responsive layout |
+| **JavaScript (ES6+)** | Core logic and DOM interactions |
+| **Quill.js** | Rich text editing for task details |
+| **SortableJS** | Drag-and-drop task organization |
+| **docx.js** | Export tasks as Word documents |
+| **Font Awesome** | Beautiful icons for all actions |
+
 # ⏰ Digital Clock Application  
 > A modern **digital clock app** built with the **HTML Canvas API** and **JavaScript**, featuring real-time rendering, smooth animations, and a fully responsive design.
 
